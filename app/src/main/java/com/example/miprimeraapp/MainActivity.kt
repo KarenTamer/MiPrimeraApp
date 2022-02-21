@@ -13,6 +13,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val bSaludar = findViewById<Button>(R.id.bSaludar)
+        val etNombre = findViewById<EditText>(R.id.etNombre)
+        val cbDev = findViewById<CheckBox>(R.id.cbDeveloper)
+
+        bSaludar.setOnClickListener(View.OnClickListener {
+            if (validaDato()) {
+                if (cbDev.isChecked) {
+                    Toast.makeText(
+                        this,
+                        "Bienvenido, " + etNombre.text + ", sé que eres un desarrollador.", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Bienvenido, " + etNombre.text, Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(this, "Escribe tu nombre para saludarte :( ", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
     }
     fun validaDato():Boolean {
 
